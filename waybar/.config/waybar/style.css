@@ -1,0 +1,99 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: transparent;
+}
+
+#workspaces {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 0 6px;
+    margin: 4px 6px;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    color: #555555;
+    border-radius: 50%;
+    min-width: 28px;
+    min-height: 28px;
+    font-size: 20px;
+    background: transparent;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    font-size: 20px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.9),
+                 0 0 16px rgba(255, 255, 255, 0.5);
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#cpu,
+#memory,
+#temperature,
+#tray,
+#keyboard-state {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin: 4px 4px;
+    color: #ffffff;
+}
+
+#battery.warning {
+    color: #ffaa00;
+}
+
+#battery.critical {
+    color: #ff4444;
+}
+
+#tray {
+    padding: 4px 10px;
+}
+
+#custom-sleep {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin: 4px 4px;
+    color: #ffffff;
+}
+
+#custom-sleep:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+#custom-shutdown {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin: 4px 4px;
+    color: #ffffff;
+}
+
+#custom-shutdown:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
