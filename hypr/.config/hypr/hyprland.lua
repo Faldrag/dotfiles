@@ -61,6 +61,8 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("nm-applet")
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("easyeffects")
+	hl.exec_cmd("hypridle")
+	hl.exec_cmd("~/.local/bin/apply-monitors.sh")
 end)
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -98,8 +100,8 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in  = 5,
-        gaps_out = 20,
+        gaps_in  = 1,
+        gaps_out = 10,
 
         border_size = 2,
 
@@ -109,10 +111,10 @@ hl.config({
         },
 
         -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-        resize_on_border = false,
+        resize_on_border = true,
 
         -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
-        allow_tearing = false,
+        allow_tearing = true,
 
         layout = "dwindle",
     },
@@ -335,6 +337,7 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
+
 hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
 hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
@@ -364,7 +367,7 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 
 --hyprlock
 
-hl.bind("SUPER + L", hl.dsp.exec_cmd('hyprlock'))
+hl.bind("SUPER + L", hl.dsp.exec_cmd('hyprlock & sleep 1 && systemctl suspend'))
 
 --Waypaper
 
@@ -422,4 +425,16 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+hl.config({ xwayland = { force_zero_scaling = true } })
+
+hl.window_rule({
+    name  = "hide-xwayland-video-bridge",
+    match = { class = "xwaylandvideobridge" },
+
+    opacity   = "0.0 0.0",
+    no_focus  = true,
+    max_size  = "1 1",
+    no_anim   = true,
 })
